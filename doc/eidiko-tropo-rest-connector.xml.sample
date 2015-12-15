@@ -1,0 +1,9 @@
+<!-- BEGIN_INCLUDE(eidiko-tropo-rest:greet) -->
+    <eidiko-tropo-rest:greet config-ref="" friend="#[map-payload:friend]" />
+<!-- END_INCLUDE(eidiko-tropo-rest:greet) -->
+<!-- BEGIN_INCLUDE(eidiko-tropo-rest:query-processor) -->
+    <eidiko-tropo-rest:query-processor config-ref="" query="SELECT fieldName FROM MY_TABLE" />
+<!-- END_INCLUDE(eidiko-tropo-rest:query-processor) -->
+<!-- BEGIN_INCLUDE(eidiko-tropo-rest:add-entity) -->
+    <eidiko-tropo-rest:add-entity config-ref="" key="id1"/>
+<!-- END_INCLUDE(eidiko-tropo-rest:add-entity) -->

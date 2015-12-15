@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<connector name="CiscoTropo">
+    <properties>
+        <connectivity-support>false</connectivity-support>
+        <OAuth-authentication>false</OAuth-authentication>
+        <metadata>static</metadata>
+        <datasense-enabled>true</datasense-enabled>
+        <transformer>false</transformer>
+    </properties>
+    <global-config credentialsFile="">
+        <config name="config">
+            <attributes>
+                <attribute name="name" use="required" caption="Name" group="Basic Settings" type="name" javaType="java.lang.String" category="General"></attribute>
+                <attribute name="url" use="optional" caption="Url" group="General" type="string" javaType="java.lang.String" default="https://api.tropo.com/v1" category="General"></attribute>
+                <attribute name="authorization" use="optional" caption="Authorization" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </config>
+    </global-config>
+    <message-processors>
+        <processor name="createSession" xmlName="create-session" caption="Create session">
+            <properties>
+                <datamapper input="" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="token" use="required" caption="Token" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+                <attribute name="variables" use="required" caption="Variables" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.String&gt;" category="General"></attribute>
+            </attributes>
+            <childElements/>
+        </processor>
+        <processor name="createApplication" xmlName="create-application" caption="Create application">
+            <properties>
+                <datamapper input="" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="variables" use="required" caption="Variables" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.String&gt;" category="General"></attribute>
+            </attributes>
+            <childElements/>
+        </processor>
+        <processor name="provisioningAddresses" xmlName="provisioning-addresses" caption="Provisioning addresses">
+            <properties>
+                <datamapper input="" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="appId" use="required" caption="App Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+                <attribute name="variables" use="required" caption="Variables" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.String&gt;" category="General"></attribute>
+            </attributes>
+            <childElements/>
+        </processor>
+        <processor name="provisioningApplication" xmlName="provisioning-application" caption="Provisioning application">
+            <properties>
+                <datamapper input="" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="appId" use="required" caption="App Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+                <attribute name="variables" use="required" caption="Variables" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.String&gt;" category="General"></attribute>
+            </attributes>
+            <childElements/>
+        </processor>
+        <processor name="deleteApplication" xmlName="delete-application" caption="Delete application">
+            <properties>
+                <datamapper input="" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="appId" use="required" caption="App Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+            <childElements/>
+        </processor>
+        <processor name="deleteAddress" xmlName="delete-address" caption="Delete address">
+            <properties>
+                <datamapper input="" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="appId" use="required" caption="App Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+                <attribute name="number" use="required" caption="Number" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+            <childElements/>
+        </processor>
+        <processor name="getApplications" xmlName="get-applications" caption="Get applications">
+            <properties>
+                <datamapper input="" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes/>
+            <childElements/>
+        </processor>
+        <processor name="getAddressByApplication" xmlName="get-address-by-application" caption="Get address by application">
+            <properties>
+                <datamapper input="" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="appId" use="required" caption="App Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+            <childElements/>
+        </processor>
+        <processor name="getAddress" xmlName="get-address" caption="Get address">
+            <properties>
+                <datamapper input="" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes/>
+            <childElements/>
+        </processor>
+        <processor name="getExchanges" xmlName="get-exchanges" caption="Get exchanges">
+            <properties>
+                <datamapper input="" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes/>
+            <childElements/>
+        </processor>
+        <processor name="getAvailablePrefixes" xmlName="get-available-prefixes" caption="Get available prefixes">
+            <properties>
+                <datamapper input="" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="available" use="required" caption="Available" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+                <attribute name="prefix" use="required" caption="Prefix" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+            <childElements/>
+        </processor>
+        <processor name="signalOperations" xmlName="signal-operations" caption="Signal operations">
+            <properties>
+                <datamapper input="" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="sessionId" use="required" caption="Session Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+                <attribute name="variables" use="required" caption="Variables" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.String&gt;" category="General"></attribute>
+            </attributes>
+            <childElements/>
+        </processor>
+        <processor name="queryProcessor" xmlName="query-processor" caption="Query processor">
+            <properties>
+                <datamapper input="" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="query" use="required" caption="Query" group="Query" type="element-query" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+            <childElements/>
+        </processor>
+        <processor name="addEntity" xmlName="add-entity" caption="Add entity">
+            <properties>
+                <datamapper input="" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="key" use="optional" caption="Key" group="General" type="type-chooser" javaType="java.lang.String" category="General"></attribute>
+                <attribute name="key" use="required" caption="Key" group="General" type="type-chooser" javaType="java.lang.String" category="General"></attribute>
+                <attribute name="entity" use="optional" caption="Entity" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.Object&gt;" category="General"></attribute>
+            </attributes>
+            <childElements/>
+        </processor>
+    </message-processors>
+</connector>
