@@ -17,7 +17,7 @@ import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 import org.mule.tools.devkit.ctf.mockup.ConnectorDispatcher;
 import org.mule.tools.devkit.ctf.mockup.ConnectorTestContext;
 
-public class TestSparkTestCases extends AbstractTestCase<CiscoTropoRestConnector> {
+public class TestTropoTestCases extends AbstractTestCase<CiscoTropoRestConnector> {
 
   
   private CiscoTropoRestConnector connector;
