@@ -1,3 +1,8 @@
+/**
+ * Copyright � 1992-2016 Cisco, Inc.
+ */
+
+
 package org.mule.modules.ciscotropo;
 
 import java.util.ArrayList;
@@ -39,8 +44,8 @@ public class DataSenseResolver { //NOSONAR
     List<MetaDataKey> keys = new ArrayList<MetaDataKey>();
 
     // Generate the keys
-    keys.add(new DefaultMetaDataKey("ENTITY_TYPE_1", "User"));
-    keys.add(new DefaultMetaDataKey("ENTITY_TYPE_2", "Book"));
+    keys.add(new DefaultMetaDataKey("USER", "User"));
+    keys.add(new DefaultMetaDataKey("BOOK", "Book"));
 
     return keys;
   }
@@ -60,7 +65,7 @@ public class DataSenseResolver { //NOSONAR
     DynamicObjectBuilder<?> dynamicObject = builder.createDynamicObject(key
       .getId());
 
-    if (key.getId().equals("ENTITY_TYPE_1")) {
+    if (key.getId().equals("USER")) {
       dynamicObject.addSimpleField("Username", DataType.STRING);
       dynamicObject.addSimpleField("age", DataType.INTEGER);
     } else {

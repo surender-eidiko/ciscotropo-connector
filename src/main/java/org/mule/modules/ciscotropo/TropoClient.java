@@ -1,5 +1,9 @@
+/**
+ * Copyright � 1992-2016 Cisco, Inc.
+ */
 package org.mule.modules.ciscotropo;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,8 +43,10 @@ public class TropoClient {
 
   public String createSession(String token, Map<String, String> variables) {
     WebResource webResource = getApiResource().path("sessions");
-    variables.put(TOKEN, token);
-    return (String) postData(variables, webResource, String.class);
+    Map<String,String> data = new HashMap<String,String>();
+    data.putAll(variables);
+    data.put(TOKEN, token);
+    return (String) postData(data, webResource, String.class);
   }
 
   public String createApplication(Map<String, String> variables) {
@@ -97,7 +103,7 @@ public class TropoClient {
 
   public String getAvailablePrefixes(String available, String prefix) {
     WebResource webResource = getApiResource().path("addresses");
-    MultivaluedMap queryParams = new MultivaluedMapImpl();
+    MultivaluedMap<String,String> queryParams = new MultivaluedMapImpl();
     queryParams.add("available", available);
     queryParams.add("prefix", prefix);
 
@@ -112,17 +118,16 @@ public class TropoClient {
     return (String) postData(variables, webResource, String.class);
   }
 
-  private Object getData(WebResource webResource, Class returnClass) {
+  private Object getData(WebResource webResource, Class<String> returnClass) {
 
     WebResource.Builder builder = addHeader(webResource);
 
     ClientResponse response = builder.get(ClientResponse.class);
-    System.out.println(response.toString());
     return response.getEntity(returnClass);
   }
 
   private Object postData(Object request, WebResource webResource,
-    Class returnClass) {
+    Class<String> returnClass) {
     WebResource.Builder builder = addHeader(webResource);
     builder.type(MediaType.APPLICATION_JSON);
     ObjectMapper mapper = new ObjectMapper();
@@ -135,7 +140,7 @@ public class TropoClient {
   }
 
   private Object putData(Object request, WebResource webResource,
-    Class returnClass) {
+    Class<String> returnClass) {
     WebResource.Builder builder = addHeader(webResource);
     builder.type(MediaType.APPLICATION_JSON);
     ObjectMapper mapper = new ObjectMapper();
@@ -147,7 +152,7 @@ public class TropoClient {
     return clientResponse.getEntity(returnClass);
   }
 
-  private Object deleteData(WebResource webResource, Class returnClass) {
+  private Object deleteData(WebResource webResource, Class<String> returnClass) {
     WebResource.Builder builder = addHeader(webResource);
     ClientResponse clientResponse = builder.delete(ClientResponse.class);
     return clientResponse.getEntity(returnClass);
@@ -165,12 +170,12 @@ public class TropoClient {
 
   private void logResponseCode(ClientResponse clientResponse) {
     if (clientResponse.getStatus() == 200) {
-      System.out.println("200 success");
+      log.fine("200 success");
     } else if (clientResponse.getStatus() == 401) {
-      System.out.println("False 400");
+      log.fine("False 400");
     } else {
-      System.out.println(clientResponse.getStatus());
-      System.out.println("Error");
+      log.fine(String.valueOf(clientResponse.getStatus()));
+      log.fine("Error");
     }
   }
 
