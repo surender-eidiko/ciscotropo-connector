@@ -1,0 +1,250 @@
+
+
+= Cisco Tropo Connector
+:keywords: Cisco, Tropo, Voice calls, SMS
+
+
+The Cisco Tropo connector facilitates connections between Mule integration and CiscoTropo Application.
+
+*Release Notes:* link:/release-notes/TropoReleaseNotes.adoc[Link to Release Notes]
+
+////
+Note: existing MuleSoft documentation should be copied from right-hand column of link:https://github.com/mulesoft/mulesoft-docs/blob/master/links.csv. Links should always follow "link:"
+////
+
+---
+
+== Contents:
+
+:toc:
+---
+
+== Introduction
+The Cisco Tropo connector facilitates connections between Mule integration and CiscoTropo applications. The CiscoTropo connector  provides to create new Tropo applications, delete applications, add/remove addresses (phone and SMS numbers, tokens), or view available exchanges (area codes and their associated regions).
+
+The Connector provides the following operations: +
+1.	Add Entity. +
+This operation is used to add Entity. +
+2.	Create Application. +
+This operation is used to create New Application in CiscoTropo. +
+3.	Create Session. +
+This operation is used to Create Session for Send message or call to customer. +
+4.	Delete Application. +
+This operation is used to Delete Application in CiscoTropo. +
+5.	Delete Address. +
+This operation is used to Delete Address in CiscoTropo. +
+Types of Address: Number, Sip, Token. +
+6.	Get Address. +
+This operation is used to get All Addresses in CiscoTropo. +
+Types of Address: Number, Sip, Token. +
+7.	Get Address By Application +
+This operation is used to get All addresses of the Application. +
+8.	Get Applications +
+This operation is used to get All Applications in CiscoTropo. +
+9.	Get Available Prefixes +
+This operation is used to get all numbers using prefix code. +
+10.	Get Exchanges. +
+This operation is used to get all locations and phone numbers in Application. +
+11.	Provisioning Application. +
+This operation is used to Update the application. +
+12.	Provisioning Addresses. +
+This operation is used to Update the Addresses in application. +
+13.	Query Processor. +
+This operation is used to get information of Books and Users. +
+14.	Signal Operations. +
+This operation is used to interrupt the function. +
+
+The connector uses the REST API exposed by Cisco Tropo Application. 
+
+
+=== Prerequisites
+
+This document assumes that you are familiar with Mule,Anypoint connectors and the Anypoint Studio Interface. To increase your familiarity with Studio, consider completing one or more Anypoint Studio Tutorials. Further, this page assumes that you have a basic understanding of Mule flows and Mule Global Elements.
+
+This document describes implementation examples within the context of Anypoint Studio, Mule ESB’s graphical user interface, and, also includes configuration details for doing the same in the XML Editor.
+
+
+=== Requirements
+•	Windows 7 64-bit +
+•	Mule Soft Software - +
+          Anypoint Studio - Tooling for Mule ESB. +
+          Version: 5.3.2. +
+          Build Id: 201510191606. +
+
+•	Install JDK 7 for DevKit 3.6 or 3.7. +
+
+
+
+=== Compatibility Matrix
+The Cisco Tropo Connector is compatible with:
+
+Application/Service	     Version
+Mule Run-time	3.7.0 or later
+
+
+---
+
+== Installing and Configuring
+
+=== Installing
+
+You can install a connector in Anypoint Studio using the instructions in Installing a Connector from Anypoint Exchange
+As we can see in the image below the Cisco Tropo Connector is available in connectors palette.
+image::palette.jpg[]
+
+=== Configuring
+
+To use the CiscoTropo Connector in your Mule application, you must configure:
+•	A global CiscoTropo element to be used by all the CiscoTropo connectors in the application (read more about global elements in Mule).
+•	Parameters of each CiscoTropo Connector instance in the flow.
+
+Follow these steps to create a global CiscoTropo configuration in a Mule application:
+    
+1.	 Click the Global Elements tab at the base of the canvas, then click Create
+2.	 In the Choose Global Type wizard, use the filter to locate and select,
+      CiscoTropo configuration then click OK.
+3.	Configure the parameters according to the instructions shown in the below image.
+image::configuration.jpg[]
+|===
+|Field	|Description
+
+|Name	|Enter a name for the configuration so it can be referenced later 
+
+|Authorization       	|Authorization Token for connecting and log into the CiscoTropo 
+
+
+|URL		|https://api.tropo.com/v1 
+|===
+
+
+4.Click OK to save the global connector configurations. +
+5.Return to the Message Flow tab in Studio. +
+
+---
+
+== Using This Connector
+
+Follow these steps to configure the parameters of a CiscoTropo Connector in the flow:   
+
+1.	Drag the CiscoTropo Connector onto the canvas, then select it to open the properties editor. +
+2.	Configure the connector’s parameters according to the table below. +
+|===
+|Field	|Description
+|Display Name	|Enter a unique label for the connector in your application.
+|Connector Configuration	|Connect to a global element linked to this connector. Global elements encapsulate reusable data about the connection to the target resource or service. Select the global CiscoTropo connector element that you just created.
+|Operation	|Select the action this component must perform:
+ Add Entity, Create Application, Create Session, Delete Application, Delete Address, Get Address, Get Address By Application, Get Applications, Get Available Prefixes, Get Exchanges, Provisioning Application, Provisioning Addresses, Query Processor, Signal Operations
+|<Operation> Request	|From Message: Select this option to define the operation based on the incoming payload.
+Create Object manually: Select this option to define the search values manually. Mule provides an editor to facilitate this task.
+|===
+
+3.	Click the blank space on the canvas to save your configurations. +
+  
+
+
+
+
+---
+
+== Example Use Case
+
+In this example flow, We are creating New Tropo Application where User can add/remove addresses (phone and SMS numbers, tokens), or view available exchanges (area codes and their associated regions).
+
+
+
+===  Anypoint Studio Visual Editor | XML Editor
+
+Explain how to create this case with  Anypoint Studio  visual editor and XML editor +
+
+[tabs]
+-----
+[tab,title="Studio Visual Editor"]
+....
+[tab content goes here]
+Create a new project by clicking New > Mule Project >Project Name: tropocreateapplication.
+1. Drag an HTTP connector into a tropocreateapplication flow. Open the connector’s properties editor.
+2. Click on the + icon shown in the image below.
+image::tropoProperties.jpg[]
+3. The Global Element Properties window of HTTP Listener Configuration opens. Enter 8081 for Port as shown below and click on 'Ok'.
+image::tropoGlobalProperties.jpg[]
+4. The new flow is now reachable through the path http://localhost:8081 from the local system.
+5. Add a Set Payload transformer after HTTP endpoint to process the message payload.
+6. Configure the Set Payload transformer according to the image below.
+image::payload.jpg[]
+7. Configure the parameters according to the table below.
+
+|===
+|Field	|Value
+ |Name	|Name of the Application you want to create.
+|Voice URL	|The URL that powers voice calls for your application. This field is optional, but must be set if messagingUrl is left empty.
+|Message URL	|The URL that powers SMS/messaging calls for your application. This field is optional, but must be set if voiceUrl is left empty.
+|Platform	|This defines whether the application will use the Scripting API ("scripting") or the Web API ("webapi"). This field is required.
+|Partition	|This defines whether the application is in "staging" (our free platform for development) or "production" (our paid platform for live applications). This field is optional and defaults to staging.
+|===
+
+
+[tab,title="XML Editor"]
+....
+[tab content goes here]
+1. Add a CiscoTropo:config global element to your project, then configure its attributes according to the table below (see code below for a complete sample).
+<CiscoTropo:config name="CiscoTropo__Configuration" authorization="Basic dmVubmVsYTpTYXJhc3UjMTA=" doc:name="CiscoTropo: Configuration"/>
+
+|===
+|Attribute|Value
+|name|CiscoTropo__Configuration
+|authorization|<Basic Auth Token>
+|===
+2. Add a http:listener-config global element to you project
+
+3. Create a Mule flow with an HTTP endpoint, configuring the endpoint according to the table below (see code below for a complete sample).
+    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
+	
+	|===
+|Attribute|Value
+|name|HTTP_Listener_Configuration
+|host|0.0.0.0
+|port|8081
+|===
+
+4. Add a set-payload transformer to your muleflow after the http endpoint according to the table below
+<set-payload value="#[['name':'Mule Integration To Tropo1','voiceUrl':'http://tropo.com','messagingUrl':'http://tropo.com','platform':'scripting','partition':'staging']]" doc:name="Set Payload"/>
+
+|Attribute|Value
+|value|#[['name':'Mule Integration To Tropo1','voiceUrl':'http://tropo.com','messagingUrl':'http://tropo.com','platform':'scripting','partition':'staging']]
+
+|===
+	
+-----
+
+=== Code Example
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:CiscoTropo="http://www.mulesoft.org/schema/mule/CiscoTropo" xmlns:eidiko-tropo-rest="http://www.mulesoft.org/schema/mule/eidiko-tropo-rest" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/eidiko-tropo-rest http://www.mulesoft.org/schema/mule/eidiko-tropo-rest/current/mule-eidiko-tropo-rest.xsd
+http://www.mulesoft.org/schema/mule/CiscoTropo http://www.mulesoft.org/schema/mule/CiscoTropo/current/mule-CiscoTropo.xsd">
+    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
+    <CiscoTropo:config name="CiscoTropo__Configuration" authorization="Basic dmVubmVsYTpTYXJhc3UjMTA=" doc:name="CiscoTropo: Configuration"/>
+    <flow name="tropocreateapplicationFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/" doc:name="HTTP"/>
+        <set-payload value="#[['name':'Mule Integration To Tropo1','voiceUrl':'http://tropo.com','messagingUrl':'http://tropo.com','platform':'scripting','partition':'staging']]" doc:name="Set Payload"/>
+        <CiscoTropo:create-application config-ref="CiscoTropo__Configuration" doc:name="CiscoTropo">
+            <CiscoTropo:variables ref="#[payload]"/>
+        </CiscoTropo:create-application>
+        <json:object-to-json-transformer doc:name="Object to JSON"/>
+    </flow>
+</mule>
+
+
+---
+
+=== See Also
+
+* Access the link:/release_notes.adoc
+
