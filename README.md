@@ -1,7 +1,4 @@
-﻿# README.md Template
-
-
-## [CiscoTropo] Anypoint™ Connector
+﻿## CiscoTropo Anypoint™ Connector
 
 
 [Cisco Tropo Connector to connect to Cisco Tropo]
@@ -27,6 +24,6 @@ You can access the full documentation <here>.
 
 ## Reporting Issues
 
-(Only for open source connectors)
 
-We use GitHub:Issues for tracking issues with this connector. You can report new issues at this link https://github.com/mulesoft/<connector-repository-name>/issues.
+
+We use GitHub:Issues for tracking issues with this connector. You can report new issues at this link https://github.com/surender-eidiko/ciscotropo-connector/issues
