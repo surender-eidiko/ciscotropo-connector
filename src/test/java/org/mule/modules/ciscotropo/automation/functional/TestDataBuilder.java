@@ -69,6 +69,10 @@ public class TestDataBuilder {
     String sessionId ="859d69e6c6e32738491288bc114c0a92";
     return sessionId;
   }
+
+  public static String getAddressNumber() {
+    return "1407";
+  }
   
   
 }
