@@ -45,6 +45,8 @@ public class CiscoTropoRestConnector {
 
   /**
   * This method creates Session Object
+  *  {@sample.xml ../../../doc/cisco-tropo-connector.xml.sample CiscoTropo:create-session}
+  *
   * @param token
   - token : This is the token associated with your application. Tropo uses the token to identify your app when it launches the session. This field is required.<BR>
   * @param variables , This identifies variables you want to pass; the only required variable is , though you can use as many additional variables as you'd like. This field is optional.<BR>
@@ -57,6 +59,8 @@ public class CiscoTropoRestConnector {
   }
   /**
   * This method create Application Object
+  *{@sample.xml ../../../doc/cisco-tropo-connector.xml.sample CiscoTropo:create-application}
+  *
   * @param variables
   * List of variables: <BR>
   - name :   The name of the application. This field is required.<BR>
@@ -75,8 +79,8 @@ public class CiscoTropoRestConnector {
   
   
   /**
-   * This method create Address Object using appId
-  
+   * This method provisions Address Object using appId
+   *{@sample.xml ../../../doc/cisco-tropo-connector.xml.sample CiscoTropo:provisioning-addresses}
    * 
    * @param appId
    * List of variables: <BR>
@@ -97,7 +101,9 @@ public class CiscoTropoRestConnector {
   }
 
   /**
-   * This Object is create Application Object using appId
+   * This method provisions Application Object using appId
+   *{@sample.xml ../../../doc/cisco-tropo-connector.xml.sample CiscoTropo:provisioning-application}
+   *
    * @param appId
    *  Sometimes you need to access a list of the applications associated with your account; maybe you need to find a particular application's ID number or need to verify whether it's a Scripting or WebAPI application.<BR>
    * @param variables 
@@ -110,7 +116,9 @@ public class CiscoTropoRestConnector {
   }
 
   /**
-   * This method remove application using appId
+   * This method removes application using appId
+   *{@sample.xml ../../../doc/cisco-tropo-connector.xml.sample CiscoTropo:delete-application}
+   *
    * @param appId
    * Use this method to remove an application. This cannot be undone; once an application has been deleted, it cannot be restored without recreating it from scratch.<BR>
    * @return String
@@ -121,7 +129,9 @@ public class CiscoTropoRestConnector {
   }
 
   /**
-   * This method delete address using appId and number
+   * This method deletes address using appId and number
+   *{@sample.xml ../../../doc/cisco-tropo-connector.xml.sample CiscoTropo:delete-address}
+   *
    * @param appId
    *  Sometimes you need to access a list of the applications associated with your account; maybe you need to find a particular application's ID number or need to verify whether it's a Scripting or WebAPI application.<BR>
    * @param number

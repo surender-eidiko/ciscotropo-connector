@@ -1,0 +1,70 @@
+<!-- BEGIN_INCLUDE(CiscoTropo:create-session) -->      
+
+    <CiscoTropo:create-session config-ref="CiscoTropo__Configuration" token="120de489a635044b99a6ce44ad5ca966747517069edd44305eb7b0f49fdf9c6fc4bb43ddff0a71580a29a0a1" doc:name="CiscoTropo">
+
+       <CiscoTropo:variables ref="#[['customerName':'ratan','numberToDial':'9258640632','msg':'Hai From Tropo Connector']]"/>
+
+    </CiscoTropo:create-session>    
+
+<!-- END_INCLUDE(CiscoTropo:create-session) -->
+
+<!-- BEGIN_INCLUDE(CiscoTropo:create-application) --> 
+	<CiscoTropo:create-application config-ref="CiscoTropo__Configuration" doc:name="CiscoTropo">
+          
+		  <CiscoTropo:variables ref="#[['name':'CiscoTropo 17122015 ','messagingUrl':'/www/MulesoftText.js','platform':'scripting','partition':'staging']]"/>
+    </CiscoTropo:create-application>
+	
+<!-- END_INCLUDE(CiscoTropo:create-application) -->
+
+<!-- BEGIN_INCLUDE(CiscoTropo:provisioning-addresses) -->   
+        <CiscoTropo:provisioning-addresses config-ref="CiscoTropo__Configuration" appId="5051143" doc:name="CiscoTropo">
+            <CiscoTropo:variables ref="#[['type':'number','prefix':'1407']]"/>
+        </CiscoTropo:provisioning-addresses>
+<!-- END_INCLUDE(CiscoTropo:provisioning-addresses) -->
+
+ <!-- BEGIN_INCLUDE(CiscoTropo:provisioning-application) -->  
+	<CiscoTropo:provisioning-application config-ref="CiscoTropo__Configuration" appId="5051143" doc:name="CiscoTropo">
+            <CiscoTropo:variables ref="#[['name':'Test tropo 16122015 on cloudHub','voiceUrl':'http://website31.com','messagingUrl':'http://website41.com','platform':'scripting','partition':'staging']]"/>
+        </CiscoTropo:provisioning-application>
+<!-- END_INCLUDE(CiscoTropo:provisioning-application) -->
+
+<!-- BEGIN_INCLUDE(CiscoTropo:signal-operations) --> 
+ 
+        <CiscoTropo:signal-operations config-ref="CiscoTropo__Configuration" sessionId="8862454108f409fd8afa8aded5efdbc5" doc:name="CiscoTropo">
+            <CiscoTropo:variables ref="#[['signal':'exit']]"/>
+        </CiscoTropo:signal-operations>
+<!-- END_INCLUDE(CiscoTropo:signal-operations) -->
+
+<!-- BEGIN_INCLUDE(CiscoTropo:query-processor) --> 
+    <CiscoTropo:query-processor config-ref="CiscoTropo__Configuration"  doc:name="CiscoTropo" query="dsql:">
+    </CiscoTropo:query-processor>
+<!-- END_INCLUDE(CiscoTropo:query-processor) -->
+
+<!-- BEGIN_INCLUDE(CiscoTropo:delete-address) --> 
+        <CiscoTropo:delete-address config-ref="CiscoTropo__Configuration" appId="5051146" number="81345790184" doc:name="CiscoTropo"/>
+<!-- END_INCLUDE(CiscoTropo:delete-address) -->
+
+<!-- BEGIN_INCLUDE(CiscoTropo:delete-application) --> 
+	  <CiscoTropo:delete-application config-ref="CiscoTropo__Configuration" appId="5051146" doc:name="CiscoTropo"/>
+<!-- END_INCLUDE(CiscoTropo:delete-application) -->
+
+<!-- BEGIN_INCLUDE(CiscoTropo:get-address) --> 
+      <CiscoTropo:get-address config-ref="CiscoTropo__Configuration" doc:name="CiscoTropo"/>
+<!-- END_INCLUDE(CiscoTropo:get-address) -->
+
+<!-- BEGIN_INCLUDE(CiscoTropo:get-address-by-application) --> 
+      <CiscoTropo:get-address-by-application config-ref="CiscoTropo__Configuration" appId="5049325" doc:name="CiscoTropo"/>
+<!-- END_INCLUDE(CiscoTropo:get-address-by-application) -->
+
+<!-- BEGIN_INCLUDE(CiscoTropo:get-applications) --> 
+  <CiscoTropo:get-applications config-ref="CiscoTropo__Configuration" doc:name="CiscoTropo"/>
+<!-- END_INCLUDE(CiscoTropo:get-applications) -->
+
+<!-- BEGIN_INCLUDE(CiscoTropo:get-available-prefixes) --> 
+        <CiscoTropo:get-available-prefixes config-ref="CiscoTropo__Configuration" available="true" prefix="1704" doc:name="CiscoTropo"/>
+<!-- END_INCLUDE(CiscoTropo:get-available-prefixes) -->
+
+<!-- BEGIN_INCLUDE(CiscoTropo:get-exchanges) --> 
+ <CiscoTropo:get-exchanges config-ref="CiscoTropo__Configuration" doc:name="CiscoTropo"/>
+<!-- END_INCLUDE(CiscoTropo:get-exchanges) -->
+
