@@ -9,13 +9,15 @@ http://www.mulesoft.org/schema/mule/CiscoTropo http://www.mulesoft.org/schema/mu
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
     <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
-    <CiscoTropo:config name="CiscoTropo__Configuration" authorization="Basic bXVsZXNvZnR1c2VyOkVpZGlrb0AxMA==" doc:name="CiscoTropo: Configuration"/>
+    <CiscoTropo:config name="CiscoTropo__Configuration" authorization="${tropo.authorization}" doc:name="CiscoTropo: Configuration" url="${tropo.url}"/>
     <flow name="tropocreatesessionFlow">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="/" doc:name="HTTP"/>
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/*" doc:name="HTTP"/>
         <set-payload value="#[['customerName':'ratan','numberToDial':'9258640632','msg':'Hai From Tropo Connector']]" doc:name="Set Payload"/>
-        <CiscoTropo:create-session config-ref="CiscoTropo__Configuration" token="120de489a635044b99a6ce44ad5ca966747517069edd44305eb7b0f49fdf9c6fc4bb43ddff0a71580a29a0a1" doc:name="CiscoTropo">
+        <logger message="#[payload]" level="INFO" doc:name="Logger"/>
+        <CiscoTropo:create-session config-ref="CiscoTropo__Configuration" token="${tropo.token}" doc:name="CiscoTropo">
             <CiscoTropo:variables ref="#[payload]"/>
         </CiscoTropo:create-session>
+        <logger message="#[payload]" level="INFO" doc:name="Logger"/>
         <json:object-to-json-transformer doc:name="Object to JSON"/>
     </flow>
 </mule>
